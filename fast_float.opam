@@ -1,0 +1,23 @@
+opam-version: "2.0"
+
+version: "v0.9.0"
+synopsis: "Library to parse floats "
+maintainer: "kakadu@pm.me"
+authors: "Daniel Lemire "
+homepage: "https://github.com/fastfloat/fast_float"
+bug-reports: "https://github.com/fastfloat/fast_float/issues"
+
+build: [
+  ["cmake" "." "-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON" "-DCMAKE_INSTALL_PREFIX:PATH=%{prefix}%" ]
+  [make ]
+]
+install: [make "install"]
+remove: [
+  ["rm" "-fr" "%{prefix}%/include/fast_float" ]
+  ["rm" "-fr" "%{share}%" ]
+  ["rm" "-fr" "%{lib}%/cmake/doctest" ]
+]
+
+depexts: [
+  # todo: conf-cmake
+]
